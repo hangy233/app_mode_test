@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <meta charSet="utf-8" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <link rel="manifest" href="manifest.json" />
+        <title>title</title>
+    </head>
+    <body>
+        <h1>get</h1>
+        <form method="get" target="_blank" action="https://google.com">
+            <input name="email" value="hang@ymail.com" />
+            <input type="submit" calue="SUBMIT" />
+        </form>
+
+        <h1>post</h1>
+        <form method="post" target="_blank" action="https://google.com">
+            <input name="email" value="hang@ymail.com" />
+            <input type="submit" calue="SUBMIT" />
+        </form>
+
+        <h1>anchor</h1>
+        <a href="https://google.com">no target</a>
+        <a href="https://google.com" target="_blank">target blank</a>
+        <a href="https://google.com" target="_self">target self</a>
+
+        <h1>simulate click</h1>
+        <div id="mimic">simulate click anchor</div>
+
+        <h1>window.open</h1>
+        <div id="opener">window.open</div>
+
+        <h1>window.open(_blank)</h1>
+        <div id="blank_opener">window.open</div>
+    </body>
+
+    <script type="text/javascript">
+        var anchor,
+            mimic = document.querySelector('#mimic'),
+            opener = document.querySelector('#opener'),
+            blankOpener = document.querySelector('#blank_opener');
+
+        var openUrl = function(url) {
+            if (!anchor) {
+                anchor = window.document.createElement('a');
+                anchor.setAttribute('rel', 'noreferrer');
+                clickEvent = new MouseEvent('click', {
+                    view: null,
+                    bubbles: false,
+                    cancelable: false
+                });
+            }
+
+            anchor.setAttribute('href', url);
+            anchor.dispatchEvent(this.clickEvent);
+        };
+
+        mimic.addEventListener('click', function() {
+            openUrl('https://google.com');
+        });
+
+        opener.addEventListener('click', function() {
+            window.open('https://google.com');
+        });
+
+        blankOpener.addEventListener('click', function() {
+            window.open('https://google.com', '_blank');
+        });
+    </script>
+</html>

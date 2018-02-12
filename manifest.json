@@ -1,0 +1,9 @@
+{
+  "short_name": "link test",
+  "name": "link test for standalone mode",
+  "start_url": "/app_mode_test/index.html",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "scope": "/app_mode_test/",
+  "theme_color": "#3367D6"
+}
